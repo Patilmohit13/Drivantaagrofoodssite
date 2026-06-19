@@ -1,0 +1,259 @@
+/* ===== DRIVANTA AGRO FOODS – Custom CSS ===== */
+
+/* --- Base --- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body { font-family: 'DM Sans', sans-serif; }
+
+/* --- Nav --- */
+#navbar {
+  background: transparent;
+}
+#navbar.scrolled {
+  background: rgba(13, 43, 31, 0.95);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.05);
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+#navbar.scrolled .nav-logo-text {
+  color: #FAF6EE;
+}
+#navbar.light-nav {
+  background: rgba(250, 246, 238, 0.95);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 rgba(92, 61, 46, 0.08);
+}
+#navbar.light-nav .nav-logo-text { color: #1B4332; }
+#navbar.light-nav .nav-links .nav-link { color: #5C3D2E; }
+#navbar.light-nav .nav-links .nav-link:hover { color: #1B4332; }
+
+.nav-link {
+  color: rgba(250, 246, 238, 0.75);
+  text-decoration: none;
+  transition: color 0.2s;
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: #F4A614;
+  transition: width 0.25s ease;
+}
+.nav-link:hover { color: #FAF6EE; }
+.nav-link:hover::after { width: 100%; }
+
+/* --- Sun Ray Signature Motif --- */
+.sun-rays {
+  background: radial-gradient(ellipse at 60% 50%, rgba(244, 166, 20, 0.06) 0%, transparent 70%);
+}
+.sun-rays::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 10%;
+  width: 600px;
+  height: 600px;
+  transform: translate(30%, -50%);
+  background: repeating-conic-gradient(
+    from 0deg at 50% 50%,
+    rgba(244, 166, 20, 0.04) 0deg,
+    transparent 2deg,
+    transparent 18deg,
+    rgba(244, 166, 20, 0.04) 20deg
+  );
+  border-radius: 50%;
+  animation: slowSpin 60s linear infinite;
+}
+
+@keyframes slowSpin {
+  to { transform: translate(30%, -50%) rotate(360deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sun-rays::before { animation: none; }
+}
+
+/* --- Scroll Cue --- */
+.scroll-cue { animation: bounceDown 2s ease-in-out infinite; }
+@keyframes bounceDown {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(6px); }
+}
+.scroll-dot { animation: scrollDot 2s ease-in-out infinite; }
+@keyframes scrollDot {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(14px); opacity: 0; }
+}
+
+/* --- Why Cards --- */
+.why-card {
+  background: #FAF6EE;
+  border: 1px solid rgba(92, 61, 46, 0.1);
+  border-radius: 20px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+.why-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(27, 67, 50, 0.08);
+  border-color: rgba(27, 67, 50, 0.15);
+}
+
+/* --- Product Swiper --- */
+.products-swiper .swiper-slide {
+  height: auto;
+}
+.product-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.product-card:hover {
+  border-color: rgba(244, 166, 20, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+.product-emoji {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+}
+
+/* --- Tabs --- */
+.tab-btn {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: rgba(250,246,238,0.6);
+  cursor: pointer;
+}
+.tab-btn:hover {
+  background: rgba(255,255,255,0.1);
+  color: #FAF6EE;
+}
+.active-tab {
+  background: #F4A614 !important;
+  border-color: #F4A614 !important;
+  color: #1B4332 !important;
+  font-weight: 600;
+}
+
+/* --- Swiper Pagination --- */
+.swiper-pagination-bullet {
+  background: rgba(250,246,238,0.3);
+  opacity: 1;
+  width: 6px;
+  height: 6px;
+}
+.swiper-pagination-bullet-active {
+  background: #F4A614;
+  width: 20px;
+  border-radius: 3px;
+  transition: width 0.3s;
+}
+
+/* --- Gallery Grid --- */
+.gallery-item {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: all 0.3s ease;
+}
+.gallery-item:hover {
+  border-color: rgba(244,166,20,0.4);
+  transform: scale(1.02);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.25);
+}
+.gallery-item .gallery-emoji { font-size: 2.5rem; }
+.gallery-item .gallery-label { font-size: 0.75rem; color: rgba(250,246,238,0.6); font-family: 'DM Sans', sans-serif; }
+
+/* Span a tall item */
+.gallery-grid .tall { grid-row: span 2; aspect-ratio: auto; min-height: 280px; }
+
+/* --- Lightbox --- */
+#lightbox { display: none; }
+#lightbox.active { display: flex; }
+.lightbox-inner {
+  background: #1B4332;
+  border-radius: 24px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.lightbox-inner .lb-emoji { font-size: 6rem; }
+.lightbox-inner .lb-title { color: #FAF6EE; font-family: 'Playfair Display', serif; font-size: 1.5rem; }
+.lightbox-inner .lb-desc { color: rgba(250,246,238,0.5); font-size: 0.875rem; text-align: center; max-width: 300px; }
+
+/* --- Contact Form --- */
+.form-input {
+  appearance: none;
+  background: white;
+}
+.form-input:focus { border-color: #1B4332; }
+.form-input.error-field { border-color: #ef4444 !important; }
+
+/* --- Packaging Card Hover --- */
+.packaging-card:hover { transform: translateY(-3px); }
+
+/* --- Scroll to Top --- */
+#scroll-top.visible {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* --- About Visual --- */
+.about-visual {
+  background: linear-gradient(135deg, #1B4332 0%, #0D2B1F 100%);
+}
+
+/* --- Stat Cards --- */
+.stat-card {
+  transition: all 0.3s ease;
+}
+.stat-card:hover {
+  background: rgba(255,255,255,0.08);
+  transform: translateY(-2px);
+}
+
+/* --- Mobile Menu Links --- */
+.mobile-link { transition: color 0.2s; }
+.mobile-link:hover { color: #F4A614; }
+
+/* --- Footer Socials --- */
+.social-icon:hover { transform: translateY(-2px); }
+
+/* --- Responsive Tweaks --- */
+@media (max-width: 768px) {
+  .gallery-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .gallery-grid .tall { grid-row: span 1; aspect-ratio: 1; min-height: auto; }
+}
+
+@media (max-width: 480px) {
+  .sun-rays::before { width: 300px; height: 300px; right: -10%; }
+}
+
+/* --- Print/A11y --- */
+@media (prefers-reduced-motion: reduce) {
+  .why-card, .product-card, .packaging-card, .gallery-item, .stat-card { transition: none; }
+  .scroll-cue, .scroll-dot { animation: none; }
+}
